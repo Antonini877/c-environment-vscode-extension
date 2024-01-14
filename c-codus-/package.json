@@ -1,0 +1,46 @@
+{
+  "name": "c-codus-",
+  "displayName": "C Codus ",
+  "description": "Run C language programs in a easy way. The extension will manage enviromnent for compilation and executing C programs.",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:c"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [{
+      "command": "c-codus-.helloWorld",
+      "title": "Hello World"
+    }],
+    "configuration": {
+      "title": "C Codus",
+      "properties": {
+        "c-codus.cCompilerPath": {
+          "type": "string",
+          "default": "",
+          "description": "path for c compiler"
+        }
+      }
+  }},
+  
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "18.x",
+    "eslint": "^8.56.0",
+    "typescript": "^5.3.3",
+    "@vscode/test-cli": "^0.0.4",
+    "@vscode/test-electron": "^2.3.8"
+  }
+}
