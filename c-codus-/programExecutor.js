@@ -1,5 +1,6 @@
 const vscode = require('vscode')
 const path = require('path')
+const setupCompiler = require('./compilerSetup')
 
 function generateButton(context) {
     let playButton = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left)
@@ -22,7 +23,7 @@ function executeCode(){
         const terminal = vscode.window.activeTerminal || vscode.window.createTerminal()
 
         const executeCommand = path.basename(getExecutableName())
-        // Send the command to the terminal
+        // execute c program
         terminal.sendText(`./${executeCommand}`)
 
         // Show the terminal
@@ -32,11 +33,15 @@ function executeCode(){
 }
 
 function generateCompilationCommand(){
+    
+    setupCompiler() // select compiler if not set
 
     const config = vscode.workspace.getConfiguration()
     const configValue = config.get('c-codus.cCompilerPath').path
 
     const activeEditor = vscode.window.activeTextEditor
+
+
 
     if(configValue && activeEditor){
 
